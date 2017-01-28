@@ -9,7 +9,6 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] =\
      'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://sql6140009:Y1912zwYwC@sql6.freemysqlhosting.net/sql6140009'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'hard to guess string'
 
