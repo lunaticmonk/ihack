@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Navbar</title>
+</head>
+<body>
+{% block navbar %}
+	<nav>
+	    <div class="nav-wrapper cyan">
+	      <a href="#" class="brand-logo">Blockchain based research journal.</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		      <li><a href = "{{url_for('create_paper')}}">Create new.</a></li>
+	      </ul>
+	    </div>
+	</nav>
+{% endblock %}
+</body>
+</html>

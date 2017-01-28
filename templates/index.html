@@ -4,35 +4,35 @@
 	<title>Blockchain</title>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
  	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/style.css')}}">
+ 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/chassis.min.css')}}">
 </head>
 <body>
 	<nav>
 	    <div class="nav-wrapper cyan">
-	      <a href="#" class="brand-logo">Logo</a>
+	      <a href="{{url_for('index')}}" class="brand-logo">Blockchain based research journal.</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		      <li id = "fakebtn"><a>Create new.</a></li>
-		      <input type="file" name="upload" id = "originalbtn">
+		      <li><a href = "{{url_for('create_paper')}}">Create new.</a></li>
 	      </ul>
 	    </div>
 	</nav>
 
-	<main class = "row card-panel">
-		<div class = "col s12">
-		<form action = "{{url_for('formpost')}}" method = "POST">
-			<input type="text" name="journaltitle" placeholder = "Title">
-			<input type="text" name="journaltext" placeholder = "Text here.">
-			<input type="submit" name="submitbtn" class = "btn cyan">
-		</form>
-		</div>
-	</main>
 	<div class = "row card-panel">
-	{% for journal in journals %}
-		<div class = "col s6 card-panel cyan">
-			<h4>{{ journal.id }})Title : </h4>&nbsp;<span>{{ journal.title }}</span>
-			<h4>Journal : </h4>&nbsp;<span>{{ journal.journal_text }}</span>
-		</div>
-	{% endfor %}
+	{% if journals %}
+		{% for journal in journals %}
+			<div class = "card-panel grey lighten-3">
+				<h4>{{ journal.id }})Title : </h4>&nbsp;<span>{{ journal.title }}</span>
+				<h4>Journal : </h4>&nbsp;<span>{{ journal.journal_text }}</span><br>
+				<a href="{{ journal.link }}" target = "_blank">Click here to see the paper.</a>
+				<div class = "buttons">
+					<button class = "btn btn-info">Factually Correct</button>
+					<button class = "btn btn-warning">Technically Incorrect</button>
+					<button class = "btn btn-success">Plagiarism free</button>
+				</div>
+			</div>
+		{% endfor %}
+	{% endif %}
 	</div>
 </body>
- <script type="text/javascript" src = "{{url_for('static', filename = 'js/index.js')}}"></script>
+<script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src = "{{url_for('static', filename = 'js/index.js')}}"></script>
 </html>
