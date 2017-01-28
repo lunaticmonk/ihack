@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blockchain</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
+ 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/style.css')}}">
+</head>
+<body>
+	<nav>
+	    <div class="nav-wrapper cyan">
+	      <a href="#" class="brand-logo">Logo</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		      <li id = "fakebtn"><a>Create new.</a></li>
+		      <input type="file" name="upload" id = "originalbtn">
+	      </ul>
+	    </div>
+	</nav>
+
+	<main class = "row card-panel">
+		<div class = "col s12">
+		<form action = "{{url_for('formpost')}}" method = "POST">
+			<input type="text" name="journaltitle" placeholder = "Title">
+			<input type="text" name="journaltext" placeholder = "Text here.">
+			<input type="submit" name="submitbtn" class = "btn cyan">
+		</form>
+		</div>
+	</main>
+	<div class = "row card-panel">
+	{% for journal in journals %}
+		<div class = "col s6 card-panel cyan">
+			<h4>{{ journal.id }})Title : </h4>&nbsp;<span>{{ journal.title }}</span>
+			<h4>Journal : </h4>&nbsp;<span>{{ journal.journal_text }}</span>
+		</div>
+	{% endfor %}
+	</div>
+</body>
+ <script type="text/javascript" src = "{{url_for('static', filename = 'js/index.js')}}"></script>
+</html>
