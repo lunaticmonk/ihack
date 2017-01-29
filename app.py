@@ -35,8 +35,19 @@ class User(UserMixin,db.Model):
 	password = db.Column(db.String(100),nullable = True)
 	password_hash = db.Column(db.String(128), nullable = True)
 
-@app.route('/')
+@app.route('/', methods = ['GET','POST'])
 def index():
+	if request.method == 'GET':
+		return render_template('login.html')
+	if request.method == 'POST':
+		# logic to check the user from database
+		# return redirect(url_for('home'))
+		if request.form["enrollment_no"] == "admin" and request.form["enrollment_secret"] == '264637d905':
+			return redirect(url_for('home'))
+		return redirect(url_for('index'))
+
+@app.route('/dashboard')
+def home():
 	journals = Journal.query.all()
 	return render_template('index.html', journals = journals)
 
@@ -66,7 +77,7 @@ def upvote():
 		fetcheditem.pf += 1
 	db.session.add(fetcheditem)
 	db.session.commit()	
-	return redirect(url_for('index'))
+	return redirect(url_for('home'))
 
 @app.route('/create_paper', methods = ["GET", "POST"])
 def create_paper():
@@ -82,7 +93,7 @@ def create_paper():
 		journal = Journal( title = journal_title, journal_text = journal_text, link = link)
 		db.session.add(journal)
 		db.session.commit()
-		return redirect(url_for('index'))
+		return redirect(url_for('home'))
 
 @app.route('/profile')
 def profile():

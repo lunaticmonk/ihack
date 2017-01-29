@@ -5,3 +5,8 @@ nav a {
 	text-decoration: none;
 	color : #000;
 }
+
+#buypaperbtn {
+	display : block;
+	float : right;
+}
