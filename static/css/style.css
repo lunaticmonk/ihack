@@ -1,16 +1,7 @@
-body {
-	background-color: #e3e3e3;
-}
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
 
-input[ type = "file" ] {
-	display : none;
-}
-
-#modal {
-	display : none;
-}
-
-a {
+nav a {
 	text-decoration: none;
-	color : #fff;
+	color : #000;
 }

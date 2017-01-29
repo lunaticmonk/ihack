@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Sign in!!</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <style>
+      .login {
+        background: #bbdefe;
+        margin: auto;
+        height: 100%;
+      }
+      textarea:focus, input:focus, #pass:focus {
+        color: #008080;
+      }
+      input::-webkit-input-placeholder {
+        color: #008080 !important;
+      }
+      input::-moz-placeholder {
+        color: #008080 !important;
+      }
+      input:-ms-input-placeholder {
+        color: #008080 !important;
+      }
+      input:-moz-placeholder {
+        color: #008080 !important;
+      }
+      #h1 {
+        margin-top: 20px;
+        font-size: 30px;
+        color: #008080;
+      }
+      #h2 {
+        color: #424242;
+      }
+    </style>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = "assets/css/bootstrap.min.css")}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = "assets/materialize/css/materialize.css")}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = "assets/css/style.css")}}">
+</head>
+<body>
+
+<div class="login">
+  <div class="nev-menu">
+  <nav>
+    <div class="nav-wrapper light-blue darken-3 z-depth-3">
+      <a href="{{url_for('index')}}" class="brand-logo center" style ="text-decoration : none">Debatify</a>
+    </div>
+  </nav>
+</div>
+<!-- nav end-->
+  <div class="container">
+    <div class="row">
+      <div class="col s4 offset-s4">
+        <p class="center" id="h1">Login</p>
+      </div>
+    </div>
+     <div class="row">
+       <form class="col s8 offset-s4" id="form" method="post" action = '{{url_for('auth.loginprocess')}}'>
+         <div class="row">
+           <div class="input-field col s6">
+             <input placeholder="Email" name="Email" type="email" class="validate" required="required">
+           </div>
+         </div>
+         <div class="row">
+           <div class="input-field col s6">
+             <input id="pass" placeholder="Password" type="password" name="Password" class="validate" required="required">
+           </div>
+         </div>
+         <div class="row">
+           <div class="col s6">
+             <button type="submit" class="btn btn-primary btn-block btn-large">Let me in.</button>
+           </div>
+         </div>
+       </form>
+     </div>
+     <div class="row">
+       <div class="col s4 offset-s4">
+         <p class="center" id="h2">New User! Register
+         <a href = "{{url_for('auth.register')}}">here</a></p>
+       </div>
+     </div>
+  </div>
+</div>
+</body>
+</html>

@@ -3,8 +3,8 @@
 <head>
 	<title>Blockchain</title>
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
+ 	<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/chassis.min.css')}}"> -->
  	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/style.css')}}">
- 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/chassis.min.css')}}">
 </head>
 <body>
 	<nav>
@@ -12,6 +12,7 @@
 	      <a href="{{url_for('index')}}" class="brand-logo">Blockchain based research journal.</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
 		      <li><a href = "{{url_for('create_paper')}}">Create new.</a></li>
+		      <li><a href="{{url_for('profile')}}">My profile</a></li>
 	      </ul>
 	    </div>
 	</nav>
@@ -20,13 +21,14 @@
 	{% if journals %}
 		{% for journal in journals %}
 			<div class = "card-panel grey lighten-3">
+				<p>Current Status : </p>
 				<h4>{{ journal.id }})Title : </h4>&nbsp;<span>{{ journal.title }}</span>
 				<h4>Journal : </h4>&nbsp;<span>{{ journal.journal_text }}</span><br>
 				<a href="{{ journal.link }}" target = "_blank">Click here to see the paper.</a>
 				<div class = "buttons">
-					<button class = "btn btn-info">Factually Correct</button>
-					<button class = "btn btn-warning">Technically Incorrect</button>
-					<button class = "btn btn-success">Plagiarism free</button>
+					<a href = "{{url_for('upvote', journal_id = journal.id, btn = 'fc')}}"><button class = "btn btn-info">Factually Correct({{journal.fc}})</button></a>
+					<a href = "{{url_for('upvote', journal_id = journal.id, btn = 'ti')}}"><button class = "btn btn-warning">Technically Incorrect({{journal.ti}})</button>
+					<a href = "{{url_for('upvote', journal_id = journal.id, btn = 'pf')}}"><button class = "btn btn-success">Plagiarism free({{journal.pf}})</button></a>
 				</div>
 			</div>
 		{% endfor %}

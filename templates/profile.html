@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css">
+ 	<!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/chassis.min.css')}}"> -->
+ 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'css/style.css')}}">
+</head>
+<body>
+	<nav>
+	    <div class="nav-wrapper cyan">
+	      <a href="{{url_for('index')}}" class="brand-logo">Blockchain based research journal.</a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		      <li><a href = "{{url_for('create_paper')}}">Create new.</a></li>
+		      <li><a href="{{url_for('profile')}}">My profile</a></li>
+	      </ul>
+	    </div>
+	</nav>
+	<div class = "card-panel">
+		<p>Name : {{name}}</p>
+		<p>Credits : {{credits}}</p>
+	</div>
+</body>
+</html>
